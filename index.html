@@ -87,31 +87,41 @@ opacity:0.9;
 <h1>Alfio's Farm</h1>
 <p>Prenota le tue uova fresche</p>
 <form id="ordineForm">
-Nome
 
-Cognome
+<label>Nome</label>
+<input type="text" id="nome" required>
 
-Telefono
+<label>Cognome</label>
+<input type="text" id="cognome" required>
 
-Prodotto
+<label>Telefono</label>
+<input type="tel" id="telefono" required>
 
-Uova di Gallina
-Uova di Nana
+<label>Prodotto</label>
+<select id="prodotto" required>
+    <option value="Uova di Gallina">Uova di Gallina</option>
+    <option value="Uova di Nana">Uova di Nana</option>
+</select>
 
-Numero di uova (minimo 4)
+<label>Numero di uova (minimo 4)</label>
+<input type="number" id="quantita" min="4" value="4" required>
 
 <div class="prezzo">
 Prezzo: 0,50 € per uovo
 </div>
+
 <div class="prezzo">
 Totale ordine:
 <div class="totale" id="totale">€ 2,00</div>
 </div>
-Data di ritiro (disponibile dal quinto giorno rispetto ad oggi)
+
+<label>Data di ritiro (disponibile dal quinto giorno rispetto ad oggi)</label>
+<input type="date" id="data" required>
 
 <button type="submit">
 Invia richiesta su WhatsApp
 </button>
+
 </form>
 </div>
 <script>

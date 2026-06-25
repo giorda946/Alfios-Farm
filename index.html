@@ -11,6 +11,7 @@ background:#f8f6f0;
 margin:0;
 padding:20px;
 }
+
 .container{
 max-width:500px;
 margin:auto;
@@ -19,24 +20,29 @@ padding:25px;
 border-radius:15px;
 box-shadow:0 0 15px rgba(0,0,0,0.1);
 }
+
 .logo{
 width:220px;
 display:block;
 margin:auto;
 }
+
 h1{
 text-align:center;
 color:#5c3d00;
 margin-top:10px;
 }
+
 p{
 text-align:center;
 }
+
 label{
 display:block;
 margin-top:15px;
 font-weight:bold;
 }
+
 input,
 select{
 width:100%;
@@ -45,16 +51,19 @@ border:1px solid #ccc;
 border-radius:8px;
 box-sizing:border-box;
 }
+
 .prezzo{
 margin-top:15px;
 font-size:18px;
 text-align:center;
 }
+
 .totale{
 font-size:24px;
 color:#2e7d32;
 font-weight:bold;
 }
+
 button{
 width:100%;
 margin-top:25px;
@@ -66,6 +75,7 @@ border-radius:10px;
 font-size:18px;
 cursor:pointer;
 }
+
 button:hover{
 opacity:0.9;
 }
@@ -77,14 +87,19 @@ opacity:0.9;
 <h1>Alfio's Farm</h1>
 <p>Prenota le tue uova fresche</p>
 <form id="ordineForm">
-
 Nome
+
 Cognome
+
 Telefono
+
 Prodotto
+
 Uova di Gallina
 Uova di Nana
+
 Numero di uova (minimo 4)
+
 <div class="prezzo">
 Prezzo: 0,50 € per uovo
 </div>
@@ -92,49 +107,71 @@ Prezzo: 0,50 € per uovo
 Totale ordine:
 <div class="totale" id="totale">€ 2,00</div>
 </div>
-
 Data di ritiro (disponibile dal quinto giorno rispetto ad oggi)
+
 <button type="submit">
 Invia richiesta su WhatsApp
 </button>
 </form>
 </div>
 <script>
+
 const prezzoUovo = 0.50;
+
 const quantitaInput = document.getElementById("quantita");
 const totaleDiv = document.getElementById("totale");
+
 function aggiornaTotale(){
 let q = parseInt(quantitaInput.value) || 4;
 totaleDiv.innerHTML = "€ " + (q * prezzoUovo).toFixed(2).replace(".", ",");
 }
+
 quantitaInput.addEventListener("input", aggiornaTotale);
+
 aggiornaTotale();
+
 const dataInput = document.getElementById("data");
+
 let oggi = new Date();
 oggi.setDate(oggi.getDate() + 5);
+
 dataInput.min = oggi.toISOString().split("T")[0];
+
 document.getElementById("ordineForm").addEventListener("submit", function(e){
+
 e.preventDefault();
+
 const nome = document.getElementById("nome").value;
 const cognome = document.getElementById("cognome").value;
 const telefono = document.getElementById("telefono").value;
 const prodotto = document.getElementById("prodotto").value;
 const quantita = document.getElementById("quantita").value;
 const data = document.getElementById("data").value;
+
 const totale = (quantita * prezzoUovo).toFixed(2).replace(".", ",");
+
 const messaggio =
 `🥚 Nuova richiesta Alfio's Farm
+
 Nome: ${nome}
 Cognome: ${cognome}
 Telefono: ${telefono}
+
 Prodotto: ${prodotto}
+
 Quantità: ${quantita} uova
+
 Totale: € ${totale}
+
 Data ritiro: ${data}`;
+
 const url =
 `https://wa.me/393382102771?text=${encodeURIComponent(messaggio)}`;
+
 window.open(url, "_blank");
+
 });
+
 </script>
 </body>
 </html>
